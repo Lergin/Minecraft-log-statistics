@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta name="description" content="Analyse your Minecraft Chatlogs with McLogStat">
+	<title>Minecraft Log Statistics</title>
+	<script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+
+	<script type="text/javascript" src='https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization",
+	"version":"1","packages":["line", "bar", "controls"]}]}'></script>
+
+
+	<link rel="import" href="bower_components/paper-item/paper-item.html">
+	<link rel="import" href="bower_components/paper-card/paper-card.html">
+	<link rel="import" href="bower_components/byutv-jsonp/byutv-jsonp.html">
+	<link rel="import" href="bower_components/paper-progress/paper-progress.html">
+	<link rel="import" href="bower_components/simple-material-table/simple-material-table.html">
+	<link rel="import" href="bower_components/iron-flex-layout/classes/iron-flex-layout.html">
+
+	<link rel="import" href="style.html">
+	<style is="custom-style" include="shared-styles"></style>
+</head>
+
+<body>
+	<h1 class="arrow">Minecraft Chatlog Stats</h1>
+
+	<template is="dom-bind" id="mc-log-stat">
+		<paper-progress class="col-md-12" value="[[progress]]" max="[[files]]"></paper-progress>
+	</template>
+
+	<h3>Select the log files (on Windows under %appdata%/.minecraft/logs)</h3>
+	<h3>The processing may take some minutes, also the screen may freeze for a short while :)</h3>
+	<input type="file" id="files" accept=".log.gz" name="files[]" multiple />
+
+	<div id="res" style="display:none">
+		<template is="dom-bind" id="mc-log-stat-playtime">
+			<paper-item class="col-md-4">
+				<paper-item-body two-line>
+					<div>Playtime:</div>
+					<div secondary>[[playtimes.all]]</div>
+				</paper-item-body>
+			</paper-item>
+
+			<paper-item class="col-md-4">
+				<paper-item-body two-line>
+					<div>Playtime SinglePlayer:</div>
+					<div secondary>[[playtimes.sp]]</div>
+				</paper-item-body>
+			</paper-item>
+
+			<paper-item class="col-md-4">
+				<paper-item-body two-line>
+					<div>Playtime Multiplayer:</div>
+					<div secondary>[[playtimes.mp]]</div>
+				</paper-item-body>
+			</paper-item>
+		</template>
+
+
+		<div id="chartRangeFilter_dashboard_div">
+			<div id="chartRangeFilter_chart_div" style="width: 100%; height: 500px"></div>
+
+			<div id="chartRangeFilter_control_div" style="width: 100%;  height: 100px;"></div>
+		</div>
+
+		<template is="dom-bind" id="mc-log-stat-server">
+			<div class="layout horizontal">
+				<template is="dom-repeat" items="[[top_servers]]" as="server">
+					<byutv-jsonp auto url="http://json2jsonp.com" params='[[computeRequestParamsIp(server.ip,server.port)]]' debounce-duration="300" last-response="{{server.ping}}"></byutv-jsonp>
+
+					<paper-card class="flex self-stretch" heading="[[computeServerIp(server.ip,server.port)]]" image="[[serverIcon(server.ping.favicon)]]">
+						<div class="card-content" id="description">[[mcFormat(server.ping.description)]]</div>
+						<div class="card-actions">
+							[[server.amount]] Joins
+							<br> [[formatTime(server.time)]] Playtime
+						</div>
+					</paper-card>
+				</template>
+			</div>
+
+			<simple-material-table title="Server" columns="[[outher_server_table_columns]]" table-data="[[outher_servers]]" sort-column-index="3" sort-column-asc="true">
+			</simple-material-table>
+		</template>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+		<!-- https://github.com/imaya/zlib.js -->
+		<script src="gunzip.min.js"></script>
+
+		<script src="bower_components/moment/min/moment.min.js"></script>
+		<script src="bower_components/moment-range/moment-range.min.js"></script>
+
+		<script src="mclogstat.js"></script>
+		<script src="mclogstat_playtime.js"></script>
+
+</body>
+
+</html>

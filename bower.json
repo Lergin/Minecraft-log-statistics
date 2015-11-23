@@ -1,0 +1,17 @@
+{
+  "name": "Minecraft Log Statistics",
+  "version": "1.0.0",
+  "authors": [
+    "Lergin <lergin@gmx.de>"
+  ],
+  "description": "a webtool that gets some information / statistics from minecraft log files",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "lergin.lima-city.de/mclogstat",
+  "dependencies": {
+    "polymer": "Polymer/Polymer#~1.1.2",
+    "google-chart": "GoogleWebComponents/google-chart",
+    "byutv-jsonp": "~1.2.0",
+    "simple-material-table": "~0.5.0"
+  }
+}
