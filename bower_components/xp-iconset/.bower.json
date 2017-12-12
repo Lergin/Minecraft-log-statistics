@@ -1,0 +1,36 @@
+{
+  "name": "xp-iconset",
+  "license": "BSD-3-Clause",
+  "version": "0.9.11",
+  "main": "xp-iconset.html",
+  "description": "A custom element used to define a set of svg icons",
+  "homepage": "http://expandjs.com/elements/xp-iconset",
+  "authors": [
+    "Giuliano Rullo <g.rullo@expandjs.com>",
+    "Maurizio Stefàno <m.stefano@expandjs.com>",
+    "Robert Manolea <r.manolea@expandjs.com>"
+  ],
+  "keywords": [
+    "web app",
+    "html5",
+    "expandjs",
+    "web-components"
+  ],
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "expandjs": "ExpandJS/expandjs#0.9.11",
+    "xp-array-behavior": "ExpandJS/xp-array-behavior#0.9.11",
+    "polymer": "Polymer/polymer#^1.1.0"
+  },
+  "_release": "0.9.11",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.9.11",
+    "commit": "1ce2d8d7130090dea51499c08232a009e8e59635"
+  },
+  "_source": "https://github.com/ExpandJS/xp-iconset.git",
+  "_target": "0.9.11",
+  "_originalSource": "ExpandJS/xp-iconset"
+}

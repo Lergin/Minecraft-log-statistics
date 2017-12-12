@@ -95,7 +95,7 @@ function drawChart() {
 function handleFileSelect(evt) {
 	var files = evt.target.files;
 	var filesReady = 0;
-
+	
 	logs = [];
 	playTimeDays = [];
 	chartsDrawed = false;
@@ -104,12 +104,12 @@ function handleFileSelect(evt) {
 	spPlaytime = new playTime();
 	PlayTimesServer = [];
 	PlayTimesSp = [];
-
+	
 	template.files = files.length;
 	template.progress = 0;
-
+	
 	for (var i = 0, f; f = files[i]; i++) {
-		if (f.type == 'application/gzip' && f.size < 10000) {
+		if (f.type == 'application/x-gzip' && f.size < 10000) {
 			var reader = new FileReader();
 
 			reader.onload = (function (file) {

@@ -12,6 +12,17 @@
     "polymer": "Polymer/Polymer#~1.1.2",
     "google-chart": "GoogleWebComponents/google-chart",
     "byutv-jsonp": "~1.2.0",
-    "simple-material-table": "~0.5.0"
+    "simple-material-table": "~0.5.0",
+    "paper-item": "^2.0.0",
+    "paper-progress": "^2.0.1",
+    "zlib.js": "^0.3.1",
+    "moment": "^2.19.4",
+    "paper-card": "PolymerElements/paper-card#^2.0.0",
+    "moment-range": "2"
+  },
+  "resolutions": {
+    "polymer": "^1.1.0",
+    "webcomponentsjs": "^0.7.2",
+    "moment-range": "2"
   }
 }
